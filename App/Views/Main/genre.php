@@ -1,0 +1,1 @@
+<h1>Genres page</h1>
