@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Auth;
 use App\Helpers\View;
 
 
@@ -25,6 +26,13 @@ if(!function_exists('layout')){
     function layout($view)
     {
         View::$main = $view;
+    }
+}
+
+if(!function_exists('check')){
+    function check()
+    {
+        Auth::check();
     }
 }
 ?>

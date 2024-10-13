@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Helpers\View;
 use App\Models\User;
+use App\Helpers\Auth;
 
 class AuthController 
 {
@@ -28,20 +29,20 @@ class AuthController
             'login' => $_POST['email'],
             'password' => $_POST['password']
         ];
-        $user = User::attach($data);
+
+        $user = Auth::attach($data);
         if($user){
-            $_SESSION['Auth'] = $user;
-            header("Location: /");  
+            header("Location: /");
         }else{
-            $_SESSION['message'] = 'User not found';
             header("Location: /login");
         }
+
     }
 
 
     public function logout()
     {
-        session_destroy();
+        Auth::logout();
         header("Location: /login");
     }
 }
