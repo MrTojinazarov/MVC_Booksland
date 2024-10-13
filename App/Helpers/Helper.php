@@ -21,4 +21,10 @@ if(!function_exists('view')){
         View::make($view, $title, $models);
     }
 }
+if(!function_exists('layout')){
+    function layout($view)
+    {
+        View::$main = $view;
+    }
+}
 ?>

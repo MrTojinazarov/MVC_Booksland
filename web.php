@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AuthController;
 use App\Routes\Route;
 use App\Controllers\MainController;
 
@@ -11,3 +12,5 @@ Route::post("/addNewBook", [MainController::class, "addNewBook"]);
 Route::post("/updateBook", [MainController::class, "updateBook"]);
 Route::post("/update", [MainController::class, "update"]);
 Route::post("/deleteBook", [MainController::class, "deleteBook"]);
+Route::get("/login", [AuthController::class, "loginPage"]);
+Route::get("/registr", [AuthController::class, "registrPage"]);

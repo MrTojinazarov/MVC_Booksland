@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class View
 {
+
+    public static $main = 'main';
+
     public static function make($view, $title, $models = [])
     {
         ob_start();
