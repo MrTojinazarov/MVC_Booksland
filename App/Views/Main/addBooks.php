@@ -13,6 +13,10 @@
                 <input type="text" name="author" class="form-control" id="author" placeholder="Author">
             </div>
             <div class="mb-3">
+                <label for="genre" class="form-label">Author</label>
+                <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre">
+            </div>
+            <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <textarea name="title" id="title" placeholder="Title" class="form-control" rows="3"></textarea>
             </div>

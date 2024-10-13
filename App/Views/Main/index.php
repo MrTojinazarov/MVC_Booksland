@@ -13,8 +13,9 @@ $books = Book::getAll();
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
-                <th>PRICE</th>
                 <th>AUTHOR</th>
+                <th>GENRE</th>
+                <th>TITLE</th>
                 <th>PHOTO</th>
                 <th>SETTINGS</th>
             </tr>
@@ -24,6 +25,7 @@ $books = Book::getAll();
                 <td><?= $book->id?></td>
                 <td><?= $book->name?></td>
                 <td><?= $book->author?></td>
+                <td><?= $book->genre?></td>
                 <td><?= $book->title?></td>
                 <td><img src="/App/Views/Main/Uploads/<?= $book->photo?>" width="100px"></td>
                 <td>

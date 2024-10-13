@@ -30,7 +30,7 @@ class MainController
     public function addNewBook()
     {
         if (isset($_POST['ok'])) {
-            if (!empty($_POST['name']) && !empty($_POST['author']) && !empty($_POST['title']) && !empty($_FILES['photo'])) {
+            if (!empty($_POST['name']) && !empty($_POST['author']) && !empty($_POST['genre']) && !empty($_POST['title']) && !empty($_FILES['photo'])) {
 
                 $photo = explode('.', $_FILES['photo']['name']);
                 $photoPath = date('Y-m-d_H-i-s_') . '.' . $photo[1];
@@ -40,6 +40,7 @@ class MainController
                 $data = [
                     'name' => $_POST['name'],
                     'author' => $_POST['author'],
+                    'genre' => $_POST['genre'],
                     'title' => $_POST['title'],
                     'photo' => $photoPath
                 ];
@@ -63,7 +64,7 @@ class MainController
     public static function update()
     {
         if (isset($_POST['ok'])) {
-            if (!empty($_POST['name']) && !empty($_POST['author']) && !empty($_POST['title']) && !empty($_POST['id']) && isset($_POST['old_photo'])) {
+            if (!empty($_POST['name']) && !empty($_POST['author']) && !empty($_POST['genre']) && !empty($_POST['title']) && !empty($_POST['id']) && isset($_POST['old_photo'])) {
 
                 $id = $_POST['id'];
 
@@ -77,6 +78,7 @@ class MainController
                             'id' => htmlspecialchars(strip_tags($id)),
                             'name' => htmlspecialchars(strip_tags($_POST['name'])),
                             'author' => htmlspecialchars(strip_tags($_POST['author'])),
+                            'genre' => htmlspecialchars(strip_tags($_POST['genre'])),
                             'title' => htmlspecialchars(strip_tags($_POST['title'])),
                             'photo' => $filepath
                         ];
@@ -89,6 +91,7 @@ class MainController
                         'id' => htmlspecialchars(strip_tags($id)),
                         'name' => htmlspecialchars(strip_tags($_POST['name'])),
                         'author' => htmlspecialchars(strip_tags($_POST['author'])),
+                        'genre' => htmlspecialchars(strip_tags($_POST['genre'])),
                         'title' => htmlspecialchars(strip_tags($_POST['title'])),
                         'photo' => htmlspecialchars(strip_tags($_POST['old_photo']))
                     ];

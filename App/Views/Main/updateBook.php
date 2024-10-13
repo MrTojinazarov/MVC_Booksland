@@ -15,6 +15,10 @@
                 <input type="text" name="author" class="form-control" id="author" placeholder="Author" value="<?= $models->author?>">
             </div>
             <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre" value="<?= $models->genre?>">
+            </div>
+            <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <textarea name="title" id="title" placeholder="Title" class="form-control" rows="3"><?= $models->title?></textarea>
             </div>
