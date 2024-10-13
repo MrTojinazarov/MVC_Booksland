@@ -41,6 +41,7 @@ class MainController
                     'name' => $_POST['name'],
                     'author' => $_POST['author'],
                     'title' => $_POST['title'],
+                    'photo' => $photoPath
                 ];
 
                 Book::create($data);
