@@ -15,3 +15,4 @@ Route::post("/deleteBook", [MainController::class, "deleteBook"]);
 Route::get("/login", [AuthController::class, "loginPage"]);
 Route::get("/registr", [AuthController::class, "registrPage"]);
 Route::post("/login", [AuthController::class, "login"]);
+Route::get("/logout", [AuthController::class, "logout"]);
