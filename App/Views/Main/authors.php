@@ -8,21 +8,20 @@ $authors = Book::authors();
     <div class="col-12 mt-3">
         <table class="table table-striped table-hover table-bordered">
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>AUTHOR</th>
                 <th>BOOKS</th>
-                <th>PHOTO</th>
                 <th>SETTINGS</th>
             </tr>
             <?php
+            $a = 1;
             foreach($authors as $author){?>
             <tr>
-                <td><?= $author->id?></td>
+                <td><?= $a?></td>
                 <td><?= $author->author?></td>
                 <td><?= $author->books?></td>
-                <td><img src="/App/Views/Main/Uploads/<?= $author->photo?>" width="100px"></td>
                 <td>
-                    <form action="updateauthor" method="POST">
+                    <form action="#" method="POST">
                         <input type="hidden" name="id" value="<?= $author->id?>">
                         <button type="submit" name="ok" class="btn btn-outline-primary" style="width: 100px;">Update</button>
                     </form>
@@ -32,7 +31,8 @@ $authors = Book::authors();
                     </form>
                 </td>
             </tr>
-            <?php }?>
+            <?php 
+            $a +=1; }?>
         </table>
 
     </div>

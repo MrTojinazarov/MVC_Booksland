@@ -67,8 +67,19 @@ class Model extends Database
         }
     }
 
-
+    public static function authors()
+    {
+        $sql = "SELECT author, COUNT(name) AS books FROM " . static::$table . " GROUP BY author";
+        $stmt = self::connect()->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public static function genres()
+    {
+        $sql = "SELECT genre, COUNT(name) AS books FROM " . static::$table . " GROUP BY genre";
+        $stmt = self::connect()->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);     
+    }
     
 }
-
 ?>
