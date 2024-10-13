@@ -27,8 +27,14 @@ $books = Book::getAll();
                 <td><?= $book->title?></td>
                 <td><img src="/App/Views/Main/Uploads/<?= $book->photo?>" width="100px"></td>
                 <td>
-                    <a href="updateBook" class="btn btn-outline-primary">Update</a>
-                    <a href="deleteBook" class="btn btn-outline-warning">Delete</a>
+                    <form action="updateBook" method="POST">
+                        <input type="hidden" name="id" value="<?= $book->id?>">
+                        <button type="submit" name="ok" class="btn btn-outline-primary" style="width: 100px;">Update</button>
+                    </form>
+                    <form action="deleteBook" method="POST">
+                        <input type="hidden" name="id" value="<?= $book->id?>">
+                        <button type="submit" name="ok" class="btn btn-outline-warning" style="width: 100px;">Delete</button>
+                    </form>
                 </td>
             </tr>
             <?php }?>

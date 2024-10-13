@@ -28,8 +28,44 @@ class Model extends Database
             return false;
         }
     }
-    
 
+    public static function getUserById($id)
+    {
+        $sql = "SELECT * FROM " .static::$table . " WHERE id = '{$id}'";
+        $stmt = self::connect()->query($sql);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    
+    public static function update(array $data, int $id)
+    {
+        $items = "";
+        foreach ($data as $key => $value) {
+            $items .= "{$key} = '{$value}',";
+        }
+        $fixeditems = rtrim($items, ",");
+
+        $sql = "UPDATE " . static::$table . " SET {$fixeditems} WHERE id = :id";
+        $statement = self::connect()->prepare($sql);
+        $statement->bindParam(':id', $id);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function delete(int $id)
+    {
+        $sql = "DELETE FROM " . static::$table . " WHERE id = '{$id}'";
+        $stmt = self::connect()->prepare($sql);
+
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
 
