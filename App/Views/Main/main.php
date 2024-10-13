@@ -39,12 +39,17 @@
                                 Login/out
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/login">Login</a></li>
-                                <li><a class="dropdown-item" href="/registr">Registr</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <?php
+                                if(!isset($_SESSION['Auth'])){?>
+                                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                                    <li><a class="dropdown-item" href="/registr">Registr</a></li>
+                                <?php }else{?>
+                                    <!-- <li>
+                                        <hr class="dropdown-divider">
+                                    </li> -->
+                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+                               <?php } ?>
                             </ul>
                         </li>
                     </ul>

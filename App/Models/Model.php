@@ -81,5 +81,22 @@ class Model extends Database
         return $stmt->fetchAll(PDO::FETCH_OBJ);     
     }
     
+    public static function attach($data)
+    {
+        $string_values = "";
+
+        foreach($data as $key => $value){
+            if($key == 'password'){
+                $value = md5($value);
+            }
+            $string_values = $string_values . "{$key} = '{$value}' AND ";
+        }
+        $string_values = rtrim($string_values, ' AND');
+        
+        $sql = "SELECT * FROM " . static::$table . " WHERE {$string_values}";
+        $statement = self::connect()->query($sql);
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
+
 }
 ?>

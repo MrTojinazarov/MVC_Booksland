@@ -14,3 +14,4 @@ Route::post("/update", [MainController::class, "update"]);
 Route::post("/deleteBook", [MainController::class, "deleteBook"]);
 Route::get("/login", [AuthController::class, "loginPage"]);
 Route::get("/registr", [AuthController::class, "registrPage"]);
+Route::post("/login", [AuthController::class, "login"]);
