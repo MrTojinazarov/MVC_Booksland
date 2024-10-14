@@ -12,6 +12,6 @@ class View
         ob_start();
         include dirname(__DIR__) .  '/Views/' . $view . '.php';
         $content = ob_get_clean();
-        include dirname(__DIR__) . '/Views/Main/main.php';
+        include dirname(__DIR__) . '/Views/' . self::$main . '.php';
     }
 }

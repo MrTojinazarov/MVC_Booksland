@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Models;
+
 use App\Database\Database;
-USE PDO;
+use PDO;
 
 class Model extends Database
 {
@@ -18,7 +20,7 @@ class Model extends Database
     {
         $keys = implode(",", array_keys($data));
         $values = implode(",", array_fill(0, count($data), '?'));
-        
+
         $sql = "INSERT INTO " . static::$table . " ({$keys}) VALUES ({$values})";
         $statement = self::connect()->prepare($sql);
         $values = array_values($data);
@@ -31,11 +33,11 @@ class Model extends Database
 
     public static function getUserById($id)
     {
-        $sql = "SELECT * FROM " .static::$table . " WHERE id = '{$id}'";
+        $sql = "SELECT * FROM " . static::$table . " WHERE id = '{$id}'";
         $stmt = self::connect()->query($sql);
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-    
+
     public static function update(array $data, int $id)
     {
         $items = "";
@@ -60,9 +62,9 @@ class Model extends Database
         $sql = "DELETE FROM " . static::$table . " WHERE id = '{$id}'";
         $stmt = self::connect()->prepare($sql);
 
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -73,30 +75,54 @@ class Model extends Database
         $stmt = self::connect()->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    
+
     public static function genres()
     {
         $sql = "SELECT genre, COUNT(name) AS books FROM " . static::$table . " GROUP BY genre";
         $stmt = self::connect()->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);     
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    
+
     public static function attach($data)
     {
         $string_values = "";
 
-        foreach($data as $key => $value){
-            if($key == 'password'){
+        foreach ($data as $key => $value) {
+            if ($key == 'password') {
                 $value = md5($value);
             }
             $string_values = $string_values . "{$key} = '{$value}' AND ";
         }
         $string_values = rtrim($string_values, ' AND');
-        
+
         $sql = "SELECT * FROM " . static::$table . " WHERE {$string_values}";
         $statement = self::connect()->query($sql);
         return $statement->fetch(PDO::FETCH_OBJ);
     }
 
+    public static function attachReg($data)
+    {
+        $checklogin = "SELECT * FROM " . static::$table . " WHERE login = ?";
+        $Statement = self::connect()->prepare($checklogin);
+        $Statement->execute([$data['login']]);
+
+        if ($Statement->rowCount() > 0) {
+            return false;
+        }
+
+        $data['password'] = md5($data['password']);
+
+        $keys = implode(",", array_keys($data));
+        $values = implode(",", array_fill(0, count($data), '?'));
+
+        $sql = "INSERT INTO " . static::$table . " ({$keys}) VALUES ({$values})";
+        $statement = self::connect()->prepare($sql);
+        $values = array_values($data);
+
+        if ($statement->execute($values)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-?>

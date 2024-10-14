@@ -9,7 +9,8 @@ class AuthController
 {
     public function __construct()
     {
-        layout("loginMain");
+        // dd(123);
+        layout("Main/main");
     }
 
     public function loginPage()
@@ -44,6 +45,21 @@ class AuthController
     {
         Auth::logout();
         header("Location: /login");
+    }
+
+    public function registr()
+    {
+        $data = [
+            'login' => $_POST['email'],
+            'password' => $_POST['password']
+        ];
+
+        $user = Auth::attachReg($data);
+        if($user){
+            header("Location: /");
+        }else{
+            header("Location: /registr");
+        }
     }
 }
 ?>  

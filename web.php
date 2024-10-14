@@ -16,3 +16,5 @@ Route::get("/login", [AuthController::class, "loginPage"]);
 Route::get("/registr", [AuthController::class, "registrPage"]);
 Route::post("/login", [AuthController::class, "login"]);
 Route::get("/logout", [AuthController::class, "logout"]);
+Route::post("/registr", [AuthController::class, "registr"]);
+

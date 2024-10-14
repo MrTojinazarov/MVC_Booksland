@@ -38,5 +38,17 @@ class Auth
     {
         unset($_SESSION['Auth']);
     }
+
+    
+    public static function attachReg($data)
+    {
+        $user = User::attachReg($data);
+        if($user){
+            $_SESSION['Auth'] = $user;
+            return true;  
+        }else{
+            return false;
+        }
+    }
 }
 ?> 

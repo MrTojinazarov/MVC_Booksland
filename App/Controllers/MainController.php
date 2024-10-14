@@ -6,7 +6,11 @@ use App\Models\Book;
 
 class MainController
 {
-
+    public function __construct()
+    {
+        // dd(123);
+        layout("Main/main");
+    }
     public function index()
     {
         return view('Main/index', 'All Books');

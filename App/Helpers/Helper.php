@@ -25,6 +25,7 @@ if(!function_exists('view')){
 if(!function_exists('layout')){
     function layout($view)
     {
+        // dd($view);
         View::$main = $view;
     }
 }

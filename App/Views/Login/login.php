@@ -13,7 +13,7 @@ if(isset($_SESSION['messages'])){
                 <input type="email" class="form-control" name="email" id="name" placeholder="Email">
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Author</label>
+                <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
             </div>
             <div class="col-2 offset-5">
